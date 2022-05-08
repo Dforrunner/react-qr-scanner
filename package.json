@@ -1,0 +1,43 @@
+{
+  "name": "react-qrcode-scanner",
+  "version": "1.0.0",
+  "description": "QR code scanner component for React apps",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dforrunner/react-qr-scanner.git"
+  },
+  "keywords": [
+    "react",
+    "qr",
+    "qrcode",
+    "scanner",
+    "reader"
+  ],
+  "author": "Muhammet Barut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dforrunner/react-qr-scanner/issues"
+  },
+  "homepage": "https://github.com/Dforrunner/react-qr-scanner#readme",
+  "devDependencies": {
+    "@babel/preset-react": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "jsqr": "^1.4.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "rollup": "^2.72.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "jsqr": "^1.4.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
