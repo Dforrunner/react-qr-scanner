@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 
 ---
 
@@ -7,13 +7,13 @@ It uses HTML canvas to capture images and uses jsQR library to detect QR codes i
 <b>NOTE: HTTPS is required to use camera on mobile devices. However, you can test over localhost on your computer
 
 
-#Install
+# Install
 
 ---
 
 npm i react-qrcode-scanner
 
-#Example
+# Example
 
 ---
 
@@ -83,7 +83,7 @@ export default App;
 
 ```
 
-#License
+# License
 
 ---
 
