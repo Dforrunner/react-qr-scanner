@@ -1,49 +1,46 @@
-const NoVideoInputDevicesError = () => {
-  this.name = 'NoVideoInputDevicesError'
-  this.message = 'No video input devices found'
-}
-NoVideoInputDevicesError.prototype = new Error()
-
-const defaultDeviceIdChooser = (filteredDevices, videoDevices, facingMode) => {
-  if(filteredDevices.length > 0)
-    return filteredDevices[0].deviceId
-
-  if(videoDevices.length === 1 || facingMode === 'user')
-    return videoDevices[0].deviceId
-
-  return videoDevices[1].deviceId
+function NoVideoInputDevicesError() {
+  return new Error({
+    name: 'NoVideoInputDevicesError',
+    message: 'No video input devices found',
+  });
 }
 
-const getFacingModePattern = (facingMode) => facingMode === 'environment'
-  ? /rear|back|environment/ig
-  : /front|user|face/ig
+function defaultDeviceIdChooser(filteredDevices, videoDevices, facingMode) {
+  if (filteredDevices.length > 0) return filteredDevices[0].deviceId;
 
-export const getDeviceId = (facingMode, chooseDeviceId = defaultDeviceIdChooser) =>
-  // Get manual deviceId from available devices.
-  new Promise((resolve, reject) => {
-    let enumerateDevices
-    try{
-      enumerateDevices = navigator.mediaDevices.enumerateDevices()
-    }catch(err){
-      reject(new NoVideoInputDevicesError())
+  if (videoDevices.length === 1 || facingMode === 'user') return videoDevices[0].deviceId;
+
+  return videoDevices[1].deviceId;
+}
+
+function getFacingModePattern(facingMode) {
+  return facingMode === 'environment' ? /rear|back|environment/gi : /front|user|face/gi;
+}
+
+ // Get manual deviceId from available devices.
+export function getDeviceId(facingMode, chooseDeviceId = defaultDeviceIdChooser) {
+  return new Promise((resolve, reject) => {
+    let enumerateDevices;
+    try {
+      enumerateDevices = navigator.mediaDevices.enumerateDevices();
+    } catch (err) {
+      reject(new NoVideoInputDevicesError());
     }
-    enumerateDevices.then(devices => {
-      // Filter out non-videoinputs
-      const videoDevices = devices.filter(
-        device => device.kind === 'videoinput'
-      )
+    enumerateDevices.then((devices) => {
+      // Filter out non-video inputs
+      const videoDevices = devices.filter((device) => device.kind === 'videoinput');
 
       if (videoDevices.length < 1) {
-        reject(new NoVideoInputDevicesError())
-        return
+        reject(new NoVideoInputDevicesError());
+        return;
       }
 
-      const pattern = getFacingModePattern(facingMode)
+      const pattern = getFacingModePattern(facingMode);
 
       // Filter out video devices without the pattern
-      const filteredDevices = videoDevices.filter(({ label }) =>
-        pattern.test(label))
+      const filteredDevices = videoDevices.filter(({ label }) => pattern.test(label));
 
-      resolve(chooseDeviceId(filteredDevices, videoDevices, facingMode))
-    })
-  })
+      resolve(chooseDeviceId(filteredDevices, videoDevices, facingMode));
+    });
+  });
+} 

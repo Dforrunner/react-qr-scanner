@@ -1,7 +1,5 @@
-'use strict';
-
-var React = require('react');
-var jsQR = require('jsqr');
+import React, { useEffect } from 'react';
+import jsQR from 'jsqr';
 
 function NoVideoInputDevicesError() {
   return new Error({
@@ -184,7 +182,7 @@ const QrScanner = ({
     }
   };
   const setRefFactory = key => element => els[key] = element;
-  React.useEffect(() => {
+  useEffect(() => {
     initiate();
     return () => {
       if (timeout) {
@@ -247,4 +245,4 @@ const QrScanner = ({
   })));
 };
 
-exports.QrScanner = QrScanner;
+export { QrScanner };

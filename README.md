@@ -4,14 +4,17 @@
 
 A lightweight React component for reading QR codes from the web or mobile camera. 
 It uses HTML canvas to capture images and uses jsQR library to detect QR codes in the image data.
-<b>NOTE: HTTPS is required to use camera on mobile devices. However, you can test over localhost on your computer
+<b>NOTE: HTTPS/SSL is required to access camera outside of localhost</b>
+
+## [DEMO](https://react-qrcode-scanner-demo.vercel.app/)
 
 
 # Install
 
 ---
-
+```bash
 npm i react-qrcode-scanner
+```
 
 # Example
 
@@ -59,20 +62,17 @@ function App() {
                  
                  resolution = 600, //canvas resolution
                  
-                 video = { //any valid JS-CSS can be added here
-                           width: '50%',
-                           height: '85%',
-                       },
+                 aspectRatio = '16:9',
                        
                  showViewFinder = true,
                  
                  viewFinder = { //any valid JS-CSS can be added here
-                           border: '12px solid rgba(255,255,255,0.3)',
-                           position: 'absolute',
-                           borderRadius: '5px',
-                           width: '250px',
-                           height: '250px'
-                       }
+                    border: '12px solid rgba(255,255,255,0.3)',
+                    position: 'absolute',
+                    borderRadius: '5px',
+                    width: '250px',
+                    height: '250px'
+                }
                  */
             />
         </div>

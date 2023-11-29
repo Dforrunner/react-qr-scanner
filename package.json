@@ -1,6 +1,6 @@
 {
   "name": "react-qrcode-scanner",
-  "version": "1.0.2",
+  "version": "1.1.6",
   "description": "QR code scanner component for React apps",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -25,19 +25,20 @@
   },
   "homepage": "https://github.com/Dforrunner/react-qr-scanner#readme",
   "devDependencies": {
-    "@babel/preset-react": "^7.16.7",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@babel/preset-react": "^7.23.3",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "jsqr": "^1.4.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "rollup": "^2.72.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^4.6.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4"
   },
   "peerDependencies": {
     "jsqr": "^1.4.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   }
 }
