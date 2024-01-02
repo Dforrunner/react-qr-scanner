@@ -3,7 +3,7 @@
   "version": "1.1.6",
   "description": "QR code scanner component for React apps",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c"
   },
