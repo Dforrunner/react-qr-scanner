@@ -1,23 +1,25 @@
-const NoVideoInputDevicesError = () => ({
-  name: 'NoVideoInputDevicesError',
-  message: 'No video input devices found',
-});
-NoVideoInputDevicesError.prototype = new Error();
+function NoVideoInputDevicesError() {
+  return new Error({
+    name: 'NoVideoInputDevicesError',
+    message: 'No video input devices found',
+  });
+}
 
-const defaultDeviceIdChooser = (filteredDevices, videoDevices, facingMode) => {
+function defaultDeviceIdChooser(filteredDevices, videoDevices, facingMode) {
   if (filteredDevices.length > 0) return filteredDevices[0].deviceId;
 
   if (videoDevices.length === 1 || facingMode === 'user') return videoDevices[0].deviceId;
 
   return videoDevices[1].deviceId;
-};
+}
 
-const getFacingModePattern = (facingMode) =>
-  facingMode === 'environment' ? /rear|back|environment/gi : /front|user|face/gi;
+function getFacingModePattern(facingMode) {
+  return facingMode === 'environment' ? /rear|back|environment/gi : /front|user|face/gi;
+}
 
-export const getDeviceId = (facingMode, chooseDeviceId = defaultDeviceIdChooser) =>
-  // Get manual deviceId from available devices.
-  new Promise((resolve, reject) => {
+// Get manual deviceId from available devices.
+export function getDeviceId(facingMode, chooseDeviceId = defaultDeviceIdChooser) {
+  return new Promise((resolve, reject) => {
     let enumerateDevices;
     try {
       enumerateDevices = navigator.mediaDevices.enumerateDevices();
@@ -25,7 +27,7 @@ export const getDeviceId = (facingMode, chooseDeviceId = defaultDeviceIdChooser)
       reject(new NoVideoInputDevicesError());
     }
     enumerateDevices.then((devices) => {
-      // Filter out non-videoinputs
+      // Filter out non-video inputs
       const videoDevices = devices.filter((device) => device.kind === 'videoinput');
 
       if (videoDevices.length < 1) {
@@ -41,3 +43,4 @@ export const getDeviceId = (facingMode, chooseDeviceId = defaultDeviceIdChooser)
       resolve(chooseDeviceId(filteredDevices, videoDevices, facingMode));
     });
   });
+}
