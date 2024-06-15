@@ -10,7 +10,7 @@ const decoder = (imageData) =>
     else resolve();
   });
 
-export const QrScanner = ({
+export function QrScanner({
   onError = (error) => console.log({ error }),
   onScan = (value) => console.log({ value }),
   facingMode = 'environment',
@@ -30,7 +30,7 @@ export const QrScanner = ({
     width: '250px',
     height: '250px',
   },
-}) => {
+}) {
   const els = {};
   let timeout, stopCamera;
 
@@ -226,4 +226,4 @@ export const QrScanner = ({
       </div>
     </div>
   );
-};
+}

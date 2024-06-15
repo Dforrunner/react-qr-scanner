@@ -1,9 +1,13 @@
 {
   "name": "react-qrcode-scanner",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "QR code scanner component for React apps",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "dist/index.es.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
     "build": "rollup -c"
   },
