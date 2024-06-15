@@ -1,21 +1,17 @@
 # Introduction
 
----
-
-A lightweight React component for reading QR codes from the web or mobile camera. 
-It uses HTML canvas to capture images and uses jsQR library to detect QR codes in the image data.
+A React component that provides a simple and efficient way to read QR codes from a web or mobile camera. This lightweight component utilizes HTML canvas to capture images and leverages the jsQR library to detect QR codes within the image data.
 <b>NOTE: HTTPS is required to use camera on mobile devices. However, you can test over localhost on your computer
 
+## [DEMO](https://react-qrcode-scanner-demo.vercel.app/)
 
 # Install
 
----
-
+```bash
 npm i react-qrcode-scanner
+```
 
 # Example
-
----
 
 ```javascript
 import React from 'react';
@@ -36,44 +32,6 @@ function App() {
             <QrScanner
                 onScan={handleScan}
                 onError={handleError}
-
-                /** Default props
-
-                 onError = (error) => console.log({error}),
-                 
-                 onScan = (value) => console.log({value}),
-                 
-                 facingMode = 'environment', // environment|face
-                 
-                 constraints = null, //device constraints
-                 
-                 onLoad = (val :{mirrorVideo, streamLabel}) => null,
-                 
-                 flipHorizontally = false, //flip or reflect the video output based on facing mode
-                 
-                 style, //section styling can be added here
-                 
-                 className, //classnames will be added to the section wrapper
-                 
-                 delay = 800, //delay between each scan
-                 
-                 resolution = 600, //canvas resolution
-                 
-                 video = { //any valid JS-CSS can be added here
-                           width: '50%',
-                           height: '85%',
-                       },
-                       
-                 showViewFinder = true,
-                 
-                 viewFinder = { //any valid JS-CSS can be added here
-                           border: '12px solid rgba(255,255,255,0.3)',
-                           position: 'absolute',
-                           borderRadius: '5px',
-                           width: '250px',
-                           height: '250px'
-                       }
-                 */
             />
         </div>
     );
@@ -83,14 +41,25 @@ export default App;
 
 ```
 
+# Props
+
+| Prop Name | Type | Default Value | Description |
+| --- | --- | --- | --- |
+| onError | Function | (error) => console.log({error}) | Callback function that is called when an error occurs during scanning. |
+| onScan | Function | (value) => console.log({value}) | Callback function that is called when a QR code is successfully scanned. |
+| facingMode | String | 'environment' | The facing mode of the camera. Can be set to 'environment' or 'face'. |
+| constraints | Object | null | The device constraints for the camera. |
+| onLoad | Function | (val: {mirrorVideo, streamLabel}) => null | Callback function that is called when the component is loaded. |
+| flipHorizontally | Boolean | false | Determines whether the video output should be flipped or reflected based on the facing mode. |
+| style | Object | null | Additional styling for the section. |
+| className | String | null | Additional class names for the section wrapper. |
+| delay | Number | 800 | The delay between each scan attempt in milliseconds. |
+| resolution | Number | 600 | The resolution of the canvas in pixels. |
+| video | Object | { width: '50%', height: '85%' } | Additional CSS styles for the video element. |
+| showViewFinder | Boolean | true | Determines whether to show the viewfinder. |
+| viewFinder | Object | { border: '12px solid rgba(255,255,255,0.3)', position: 'absolute', borderRadius: '5px', width: '250px', height: '250px' } | Additional CSS styles for the viewfinder element. |
+
 # License
 
----
 
-The MIT License (MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
