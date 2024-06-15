@@ -1,3 +1,5 @@
+/// <reference path="../types/index.d.ts" />
+
 import React, { useEffect } from 'react';
 import { getDeviceId } from './getDeviceId';
 import jsQR from 'jsqr';
